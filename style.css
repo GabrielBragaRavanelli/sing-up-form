@@ -119,6 +119,45 @@ body::before {
     border-color: hsl(249, 10%, 26%);
 }
 
+.input-box {
+    position: relative;
+}
+
+.input-box input.input-error {
+    border-color: hsl(0, 100%, 74%);
+}
+
+.input-box input.input-success {
+    border-color: hsl(154, 59%, 40%);
+}
+
+.error-message {
+    min-height: 14px;
+    margin-top: 6px;
+    display: block;
+    text-align: right;
+    font-size: 0.68rem;
+    color: hsl(0, 100%, 65%);
+    font-style: italic;
+}
+
+.input-box.has-toggle input {
+    padding-right: 74px;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 12px;
+    top: 27px;
+    transform: translateY(-50%);
+    border: none;
+    background: transparent;
+    color: hsl(248, 32%, 49%);
+    font-weight: 700;
+    font-size: 0.75rem;
+    cursor: pointer;
+}
+
 .test-button button {
     width: 100%;
     height: 54px;
@@ -137,6 +176,25 @@ body::before {
 
 .test-button button:hover {
     filter: brightness(1.07);
+}
+
+.test-button button:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+    filter: none;
+}
+
+.test-button button.is-loading {
+    position: relative;
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.form-feedback {
+    margin-top: 6px;
+    font-size: 0.8rem;
+    text-align: center;
+    color: hsl(154, 59%, 35%);
+    font-weight: 600;
 }
 
 .terms p {

@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+:root {
+    --bg-main: hsl(0, 100%, 74%);
+    --accent-blue: hsl(248, 32%, 49%);
+    --accent-green: hsl(154, 59%, 51%);
+    --text-light: hsl(0, 0%, 100%);
+    --text-dark: hsl(249, 10%, 26%);
+    --card-shadow: 0 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-light);
+    display: grid;
+    place-items: center;
+    padding: 24px;
+    overflow-x: hidden;
+}
+
+/* Subtle geometric texture to resemble the reference background pattern. */
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+        radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.11) 0 2px, transparent 2px),
+        radial-gradient(circle at 80% 30%, rgba(255, 255, 255, 0.1) 0 2px, transparent 2px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+        linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+    background-size: 120px 120px, 140px 140px, 60px 60px, 60px 60px;
+    opacity: 0.35;
+    pointer-events: none;
+}
+
+.container {
+    width: min(1100px, 100%);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.estrutura-esquerda h1 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.1;
+    margin-bottom: 20px;
+    max-width: 15ch;
+    color: var(--text-light);
+}
+
+.estrutura-esquerda p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    max-width: 52ch;
+    color: rgba(255, 255, 255, 0.92);
+}
+
+.estrutura-direita {
+    width: 100%;
+}
+
+.estrutura-cima {
+    background: var(--accent-blue);
+    border-radius: 10px;
+    text-align: center;
+    padding: 16px;
+    box-shadow: var(--card-shadow);
+    margin-bottom: 24px;
+}
+
+.estrutura-cima p {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.formulario {
+    background: #fff;
+    border-radius: 10px;
+    padding: 36px;
+    box-shadow: var(--card-shadow);
+}
+
+.input-group {
+    display: grid;
+    gap: 16px;
+}
+
+.input-box input {
+    width: 100%;
+    height: 54px;
+    border-radius: 6px;
+    border: 1px solid hsl(246, 25%, 87%);
+    padding: 0 16px;
+    font-size: 0.92rem;
+    color: var(--text-dark);
+    font-weight: 600;
+    outline: none;
+}
+
+.input-box input::placeholder {
+    color: hsl(246, 12%, 60%);
+    font-weight: 500;
+}
+
+.input-box input:focus {
+    border-color: hsl(249, 10%, 26%);
+}
+
+.test-button button {
+    width: 100%;
+    height: 54px;
+    border: none;
+    border-radius: 6px;
+    background: var(--accent-green);
+    color: #fff;
+    letter-spacing: 0.8px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 0 4px 0 rgba(33, 135, 90, 0.55);
+    transition: filter 0.2s ease;
+}
+
+.test-button button:hover {
+    filter: brightness(1.07);
+}
+
+.terms p {
+    font-size: 0.68rem;
+    text-align: center;
+    color: hsl(246, 20%, 70%);
+    line-height: 1.5;
+}
+
+.terms a {
+    color: hsl(0, 100%, 65%);
+    text-decoration: none;
+    font-weight: 700;
+}
+
+@media (max-width: 900px) {
+    body {
+        padding: 64px 20px;
+    }
+
+    .container {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        text-align: center;
+    }
+
+    .estrutura-esquerda h1,
+    .estrutura-esquerda p {
+        max-width: 100%;
+    }
+
+    .formulario {
+        padding: 24px;
+    }
+}

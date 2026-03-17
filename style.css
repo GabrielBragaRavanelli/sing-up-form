@@ -28,7 +28,6 @@ body {
     overflow-x: hidden;
 }
 
-/* Subtle geometric texture to resemble the reference background pattern. */
 body::before {
     content: '';
     position: fixed;

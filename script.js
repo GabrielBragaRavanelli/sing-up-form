@@ -11,6 +11,10 @@ if (form) {
 	const submitButton = form.querySelector('button[type="submit"]');
 	const storageKey = 'signupFormDraft';
 
+	if (!submitButton || Object.values(fields).some((input) => !input)) {
+		console.error('Formulario incompleto: verifique ids dos campos e botao submit.');
+	} else {
+
 	Object.values(fields).forEach((input) => {
 		const inputBox = input.closest('.input-box');
 		let errorElement = inputBox.querySelector('.error-message');
@@ -75,6 +79,13 @@ if (form) {
 		}
 	};
 
+	function isFormValid() {
+		return Object.values(fields).every((input) => {
+			const validator = validators[input.name];
+			return validator ? !validator(input.value) : true;
+		});
+	}
+
 	function setFieldState(input, message) {
 		const inputBox = input.closest('.input-box');
 		const errorElement = inputBox.querySelector('.error-message');
@@ -137,11 +148,7 @@ if (form) {
 	Object.values(fields).forEach((input) => {
 		input.addEventListener('input', () => {
 			validateField(input);
-			const allValid = Object.values(fields).every((currentInput) => {
-				const validator = validators[currentInput.name];
-				return validator ? !validator(currentInput.value) : true;
-			});
-			submitButton.disabled = !allValid;
+			submitButton.disabled = !isFormValid();
 			feedback.textContent = '';
 			saveDraft();
 		});
@@ -180,6 +187,9 @@ if (form) {
 
 		localStorage.removeItem(storageKey);
 		form.reset();
+		fields.password.type = 'password';
+		toggleButton.textContent = 'Mostrar';
+		toggleButton.setAttribute('aria-label', 'Mostrar senha');
 
 		Object.values(fields).forEach((input) => {
 			input.classList.remove('input-error', 'input-success');
@@ -195,5 +205,6 @@ if (form) {
 	});
 
 	restoreDraft();
-	validateForm();
+	submitButton.disabled = !isFormValid();
+	}
 }
